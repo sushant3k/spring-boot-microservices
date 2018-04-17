@@ -1,0 +1,31 @@
+spring:
+    application:
+        name:   zuul-service
+zuul:
+    routes:
+        customer-management:
+            path: /customers/**
+            serviceId: customer-management
+
+zuul:
+    routes:
+        user-management:
+            path: /users/**
+            serviceId: user-management
+
+ribbon:
+    eureka:
+        enabled: true
+        ReadTimeout: 20000
+        ConnectTimeout: 20000
+
+server:
+    port: 7080
+
+    
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://ggnlabvm-mqoe02:8761/eureka,http://ggnlabvm-mqoe03:8761/eureka
+#    instance:
+#        preferIpAddress: true

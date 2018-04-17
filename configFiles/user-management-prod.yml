@@ -1,0 +1,23 @@
+server:
+  port: 8082
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ggnlabvm-mqoe02:8761/eureka,http://ggnlabvm-mqoe03:8761/eureka
+#  instance:
+#    preferIpAddress: true
+
+feign:
+  hystrix:
+    enabled:  true
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+name: prod

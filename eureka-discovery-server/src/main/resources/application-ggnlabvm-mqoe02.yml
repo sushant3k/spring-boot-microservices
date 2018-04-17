@@ -1,0 +1,19 @@
+spring:
+    profiles: ggnlabvm-mqoe02
+server:
+    port:  8761
+eureka:
+    instance:
+        hostname: ggnlabvm-mqoe02
+    client:
+        serviceUrl:
+            defaultZone: http://ggnlabvm-mqoe03:8761/eureka/       
+#        register-with-eureka: false
+#        fetch-registry: false    
+        
+logging:
+    level:
+        com:
+           netflix:
+               eureka: OFF
+               discovery: OFF
