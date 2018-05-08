@@ -1,0 +1,13 @@
+spring:
+    activemq:
+        broker-url: tcp://ggnlabvm-mqoe02:61616
+        pool:
+            enabled: true
+            max-connections:50
+    
+    jpa:
+        hibernate.ddl-auto: create
+    datasource:
+        url: jdbc:mysql://localhost:3306/order-fullfillment
+        username: root
+        password: hsc321

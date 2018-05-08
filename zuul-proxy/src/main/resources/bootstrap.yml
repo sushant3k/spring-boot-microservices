@@ -3,21 +3,44 @@ spring:
         name:   zuul-service
 zuul:
     routes:
-        customer-management:
+        customers:
             path: /customers/**
             serviceId: customer-management
-
-zuul:
-    routes:
+            sensitiveHeaders:
         user-management:
             path: /users/**
             serviceId: user-management
+            sensitiveHeaders:
+        auth-server:
+            path: /uaa/**            
+            serviceId: auth-server
+            sensitiveHeaders:
+            
+    #add-proxy-headers: true
+    
+        #uaa:
+         #   path: /uaa/**
+          #  sensitiveHeaders:
+           # serviceId: auth-server
 
+#security: 
+#    basic:
+#       enabled: true    
+#    oauth2:    
+#        client:
+#          accessTokenUri: http://ggnlabvm-mqoe02:8090/uaa/oauth/token
+#          userAuthorizationUri: http://ggnlabvm-mqoe02:8090/uaa/oauth/authorize
+#          clientId: acme
+#          #clientSecret: YWNtZTpzcHJpbmctc2VjdXJpdHktb2F1dGgyLXJlYWQtY2xpZW50LXBhc3N3b3JkMTIzNA==
+#          clientSecret: spring-security-oauth2-read-client-password1234
+#        resource:
+#           userInfoUri: http://ggnlabvm-mqoe02:8090/uaa/user
+#           preferTokenInfo: false         
 ribbon:
     eureka:
         enabled: true
-        ReadTimeout: 20000
-        ConnectTimeout: 20000
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
 
 server:
     port: 7080
@@ -29,3 +52,4 @@ eureka:
             defaultZone: http://ggnlabvm-mqoe02:8761/eureka,http://ggnlabvm-mqoe03:8761/eureka
 #    instance:
 #        preferIpAddress: true
+
